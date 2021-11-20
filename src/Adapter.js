@@ -1,3 +1,5 @@
+import { nanoid } from 'nanoid'
+
 export default class Adapter {
   constructor(loader, storage, namePrefix, t) {
     this.loader = loader;
@@ -12,14 +14,14 @@ export default class Adapter {
     });
   }
 
-  abort() {}
+  abort() { }
 
   _sendRequest(resolve, reject) {
     this.loader.file
       .then((file) => {
         // Prepare the form data.
         const storage = this.storage;
-        const filename = this.namePrefix + file.name;
+        const filename = (this.namePrefix ? this.namePrefix : '') + file.name + nanoid(10);
         const extension = file.name.slice(file.name.lastIndexOf(".") + 1);
         let mimeType;
         switch (extension) {
