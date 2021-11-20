@@ -21,7 +21,7 @@ export default class Adapter {
       .then((file) => {
         // Prepare the form data.
         const storage = this.storage;
-        const filename = (this.namePrefix ? this.namePrefix : '') + file.name + nanoid(10);
+        const filename = (this.namePrefix ? this.namePrefix : '') + nanoid(10);
         const extension = file.name.slice(file.name.lastIndexOf(".") + 1);
         let mimeType;
         switch (extension) {
