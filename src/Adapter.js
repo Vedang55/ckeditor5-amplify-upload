@@ -21,8 +21,8 @@ export default class Adapter {
       .then((file) => {
         // Prepare the form data.
         const storage = this.storage;
-        const filename = (this.namePrefix ? this.namePrefix : '') + nanoid(10);
         const extension = file.name.slice(file.name.lastIndexOf(".") + 1);
+        const filename = (this.namePrefix ? this.namePrefix : '') + nanoid(10) + '.' + extension;
         let mimeType;
         switch (extension) {
           case "svg":
